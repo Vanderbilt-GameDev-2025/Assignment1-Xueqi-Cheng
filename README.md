@@ -30,3 +30,8 @@ The player can use the arrow keys to move the warrior. The player can jump by pr
 5. [Extra Credit] There is background music in the game. The music is played when the game starts and stops when the player dies.
 6. [Extra Credit] NPCs: There are enemies (birds) in the game, and the player should avoid touching them.
 
+## Video
+
+Here is the video of the project:
+
+[![Video](https://www.youtube.com/watch?v=Ql2DDNrDGHw)](https://www.youtube.com/watch?v=Ql2DDNrDGHw)
