@@ -34,4 +34,4 @@ The player can use the arrow keys to move the warrior. The player can jump by pr
 
 Here is the video of the project:
 
-[![Video](https://www.youtube.com/watch?v=Ql2DDNrDGHw)](https://www.youtube.com/watch?v=Ql2DDNrDGHw)
+[!][Video](https://www.youtube.com/watch?v=Ql2DDNrDGHw)](https://www.youtube.com/watch?v=Ql2DDNrDGHw)
