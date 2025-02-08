@@ -2,11 +2,7 @@
 import os
 import sys
 
-env = SConscript("godot-cpp/SConstruct")\
-    
-if "-s" in env["LINKFLAGS"]:
-    env["LINKFLAGS"].remove("-s")
-
+env = SConscript("godot-cpp/SConstruct")
 
 # For reference:
 # - CCFLAGS are compilation flags shared between C and C++
@@ -17,12 +13,22 @@ if "-s" in env["LINKFLAGS"]:
 # - LINKFLAGS are for linking flags
 
 # tweak this if you want to use different folders, or more folders, to store your source code in.
-env.Append(CPPPATH=["src/"])
+# env.Append(CPPPATH=["src/"])
+
+godot_cpp_path = "godot-cpp"
+env.Append(
+    CPPPATH=[
+        "src/",
+        godot_cpp_path + "/include",
+        godot_cpp_path + "/include/core",
+        godot_cpp_path + "/include/gen",
+    ]
+)
 sources = Glob("src/*.cpp")
 
 if env["platform"] == "macos":
     library = env.SharedLibrary(
-        "game/bin/libspin_physics.{}.{}.framework/libspin_physics.{}.{}".format(
+        "game/bin/libEnhancedInputModule.{}.{}.framework/libEnhancedInputModule.{}.{}".format(
             env["platform"], env["target"], env["platform"], env["target"]
         ),
         source=sources,
@@ -30,18 +36,20 @@ if env["platform"] == "macos":
 elif env["platform"] == "ios":
     if env["ios_simulator"]:
         library = env.StaticLibrary(
-            "game/bin/libspin_physics.{}.{}.simulator.a".format(env["platform"], env["target"]),
+            "game/bin/libEnhancedInputModule.{}.{}.simulator.a".format(env["platform"], env["target"]),
             source=sources,
         )
     else:
         library = env.StaticLibrary(
-            "game/bin/libspin_physics.{}.{}.a".format(env["platform"], env["target"]),
+            "game/bin/libEnhancedInputModule.{}.{}.a".format(env["platform"], env["target"]),
             source=sources,
         )
 else:
     library = env.SharedLibrary(
-        "game/bin/libspin_physics{}{}".format(env["suffix"], env["SHLIBSUFFIX"]),
+        "game/bin/libEnhancedInputModule.{}{}".format(env["suffix"], env["SHLIBSUFFIX"]),
         source=sources,
     )
 
+# Set library as the default build target
 Default(library)
+
